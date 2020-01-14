@@ -9,9 +9,7 @@ This code is a fork of https://github.com/anunpanya/ESP8266_QRcode
 ## Install dependency for ESP8266 QRcode
 Open Library Manager (menu Sketch > Include Library > Manage Libraries…) then install the following libraries
 - ESP8266 Oled Driver for SSD1306 display by Daniel Eichborn, Fabrice Weinberg or
-- Adafruit GFX & Adafruit ST7735 (os similar)
-
-It also can be used Adafruit_SSD1306 directly for SSD1306 see bellow)
+- Adafruit GFX & Adafruit ST7735 (or ST7789)
 
 ## Run examples from ESP8266 QRcode
 - Open Arduino IDE, try examples of ESP QRcode library
