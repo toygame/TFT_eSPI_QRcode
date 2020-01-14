@@ -18,3 +18,6 @@ It also can be used Adafruit_SSD1306 directly for SSD1306 see bellow)
 
 ## Display example
 ![qrcode](src/img/qrcode.JPG?raw=true)
+
+## TFT example
+![qrcode](src/img/tftqr.jpg?raw=true)
