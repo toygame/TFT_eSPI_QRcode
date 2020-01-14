@@ -3,6 +3,7 @@
 Just copy the ESP QRcode folder to your Arduino 'libraries' folder. I have included an example sketch.
 
 The code is based on qrdquino by tz1 : https://github.com/tz1/qrduino
+
 This code is a fork of https://github.com/anunpanya/ESP8266_QRcode
 
 ## Install dependency for ESP8266 QRcode
