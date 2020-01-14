@@ -20,15 +20,36 @@ QRcode::QRcode(Adafruit_ST7735 *tft, uint8_t model){
   offsetsY = 20;
 }
 
+QRcode::QRcode(Adafruit_ST7789 *tft, uint8_t model){
+	this->tft = tft;
+  this->model = model;
+  offsetsX = 20;
+  offsetsY = 20;
+}
+
 void QRcode::init(){
 	if (this->model==-1){
     display->init();
     display->flipScreenVertically();
     display->setColor(WHITE);
   } else {
+    ((Adafruit_ST7735 *)tft)->initR(model);
     screenwidth = tft->width();
     screenheight = tft->height(); 
-    tft->initR(model);
+    tft->setRotation(1);
+    tft->fillScreen(ST77XX_WHITE);
+  }
+}
+
+void QRcode::init(uint16_t width, uint16_t height){
+	if (this->model==-1){
+    display->init();
+    display->flipScreenVertically();
+    display->setColor(WHITE);
+  } else {
+    ((Adafruit_ST7789 *)tft)->init(width,height);
+    screenwidth = tft->width();
+    screenheight = tft->height(); 
     tft->setRotation(1);
     tft->fillScreen(ST77XX_WHITE);
   }
