@@ -7,6 +7,7 @@ int offsetsY = 10;
 int screenwidth = 128;
 int screenheight = 64;
 bool QRDEBUG = false;
+int multiply = 1;
 
 QRcode::QRcode(OLEDDisplay *display){
 	this->display = display;
@@ -32,12 +33,19 @@ void QRcode::init(){
     display->init();
     display->flipScreenVertically();
     display->setColor(WHITE);
+    multiply = 1;
   } else {
     ((Adafruit_ST7735 *)tft)->initR(model);
     screenwidth = tft->width();
     screenheight = tft->height(); 
-    tft->setRotation(1);
+    //tft->setRotation(1);
     tft->fillScreen(ST77XX_WHITE);
+    int min = screenwidth;
+    if (screenheight<screenwidth)
+      min = screenheight;
+    multiply = min/WD;
+    offsetsX = (screenwidth-(WD*multiply))/2;
+    offsetsY = (screenheight-(WD*multiply))/2;
   }
 }
 
@@ -50,8 +58,14 @@ void QRcode::init(uint16_t width, uint16_t height){
     ((Adafruit_ST7789 *)tft)->init(width,height);
     screenwidth = tft->width();
     screenheight = tft->height(); 
-    tft->setRotation(1);
+    //tft->setRotation(1);
     tft->fillScreen(ST77XX_WHITE);
+    int min = screenwidth;
+    if (screenheight<screenwidth)
+      min = screenheight;
+    multiply = WD/min;
+    offsetsX = (screenwidth-(WD*multiply))/2;
+    offsetsY = (screenheight-(WD*multiply))/2;
   }
 }
 
@@ -60,7 +74,7 @@ void QRcode::debug(){
 }
 
 void QRcode::render(int x, int y, int color){
-  int multiply = 1;
+  
   if (model != -1)
     multiply = 2;
   x=(x*multiply)+offsetsX;
