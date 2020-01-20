@@ -3,6 +3,8 @@
 #include <Adafruit_ST7735.h>
 #include <Adafruit_ST7789.h>
 
+#define OLED_MODEL 255
+
 class QRcode
 {
 	private:

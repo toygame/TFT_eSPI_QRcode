@@ -11,7 +11,7 @@ int multiply = 1;
 
 QRcode::QRcode(OLEDDisplay *display){
 	this->display = display;
-  this->model = -1;
+  this->model = OLED_MODEL;
 }
 
 QRcode::QRcode(Adafruit_ST7735 *tft, uint8_t model){
@@ -29,7 +29,7 @@ QRcode::QRcode(Adafruit_ST7789 *tft, uint8_t model){
 }
 
 void QRcode::init(){
-	if (this->model==-1){
+	if (this->model==OLED_MODEL){
     display->init();
     display->flipScreenVertically();
     display->setColor(WHITE);
@@ -50,7 +50,7 @@ void QRcode::init(){
 }
 
 void QRcode::init(uint16_t width, uint16_t height){
-	if (this->model==-1){
+	if (this->model==OLED_MODEL){
     display->init();
     display->flipScreenVertically();
     display->setColor(WHITE);
@@ -75,12 +75,12 @@ void QRcode::debug(){
 
 void QRcode::render(int x, int y, int color){
   
-  if (model != -1)
+  if (model != OLED_MODEL)
     multiply = 2;
   x=(x*multiply)+offsetsX;
   y=(y*multiply)+offsetsY;
   if(color==1) {
-    if (model==-1) {
+    if (model==OLED_MODEL) {
 	    display->setColor(BLACK);
       display->setPixel(x, y);
     } else {
@@ -93,7 +93,7 @@ void QRcode::render(int x, int y, int color){
     }
   }
   else {
-    if (model==-1) {
+    if (model==OLED_MODEL) {
 	    display->setColor(WHITE);
       display->setPixel(x, y);
     } else {
@@ -108,7 +108,7 @@ void QRcode::render(int x, int y, int color){
 }
 
 void QRcode::screenwhite(){
-   if (model==-1) {
+   if (model==OLED_MODEL) {
       display->clear();
       display->setColor(WHITE);
       display->fillRect(0, 0, screenwidth, screenheight);
@@ -151,6 +151,6 @@ void QRcode::create(String message) {
       }
     }
   }
-  if (model==-1)
+  if (model==OLED_MODEL)
     display->display();
 }
