@@ -1,5 +1,7 @@
 # TFT_eSPI QRcode
 
+Arduino Library to generate QR codes with TFT_eSPI supported displays, ILI9341, ILI9163, ST7735, S6D02A1, ILI9481, ILI9486, ILI9488, HX8357D, ST7789 and ST7796 based TFT displays that support SPI or 8 bit parallel.
+
 Just copy the TFT_ESP_QRcode folder to your Arduino 'libraries' folder.
 
 The code is based on qrdquino by tz1 : https://github.com/tz1/qrduino
